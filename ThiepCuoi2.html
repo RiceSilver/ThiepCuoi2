@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thiệp cưới | Tô Thế Nam & Lê Thị Anh Thư</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --green:#50633d;
+    --dark:#273323;
+    --sage:#dfe8c9;
+    --light:#f7f8f0;
+    --gold:#a18b55;
+    --paper:#fffefa;
+    --muted:#777e6e;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#dce3d2;
+    color:var(--dark);
+    font-family:'Be Vietnam Pro',sans-serif;
+}
+
+.page{
+    width:min(100%,560px);
+    margin:auto;
+    background:var(--paper);
+    overflow:hidden;
+    box-shadow:0 0 45px #33412b30;
+}
+
+section{
+    position:relative;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    background:linear-gradient(
+        180deg,
+        #b9c9a1 0%,
+        #e9eddd 100%
+    );
+    overflow:hidden;
+}
+
+.hero-photo{
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(
+            180deg,
+            #31452c18 20%,
+            #273323dd 100%
+        ),
+        url("AnhTo3.jpe");
+    background-size:cover;
+    background-position: center 15%; /* Căn ảnh lên trên để không che mặt */
+    background-repeat:no-repeat;
+}
+
+.hero-photo:after{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    color:#fff9;
+    font-size:12px;
+    letter-spacing:3px;
+}
+
+.hero-top{
+    position:absolute;
+    top:32px;
+    left:0;
+    right:0;
+    text-align:center;
+    color:white;
+    font-size:10px;
+    letter-spacing:5px;
+    z-index:2;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:42px 28px 58px;
+    text-align:center;
+    color:#fff;
+}
+
+.script{
+    font-family:'Great Vibes',cursive;
+    font-size:57px;
+    line-height:1.05;
+}
+
+.names{
+    font-family:'Playfair Display',serif;
+    font-size:35px;
+    letter-spacing:2px;
+    line-height:1.35;
+}
+
+.amp{
+    font-family:'Great Vibes',cursive;
+    font-size:42px;
+    margin:3px 0;
+}
+
+.hero-date{
+    font-size:11px;
+    letter-spacing:3px;
+    margin-top:23px;
+}
+
+.divider{
+    width:65px;
+    height:1px;
+    background:var(--gold);
+    margin:20px auto;
+}
+
+/* ================= SECTION ================= */
+.section{
+    padding:65px 25px;
+    text-align:center;
+}
+
+.soft{
+    background:var(--light);
+}
+
+.eyebrow{
+    font-size:10px;
+    letter-spacing:4px;
+    color:var(--gold);
+}
+
+.title{
+    font-family:'Playfair Display',serif;
+    font-size:29px;
+    font-weight:500;
+    color:var(--green);
+    margin:10px 0 16px;
+}
+
+.lead{
+    font-size:13px;
+    line-height:2;
+    color:var(--muted);
+}
+
+/* ================= ANIMATION ================= */
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* ================= FAMILY ================= */
+.family{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:28px;
+}
+
+.family-card{
+    background:#fff;
+    border:1px solid #d8e1c5;
+    padding:22px 10px;
+}
+
+.family-card h3{
+    font-size:10px;
+    letter-spacing:2px;
+    color:var(--gold);
+    font-weight:500;
+}
+
+.family-card p{
+    font-size:13px;
+    line-height:2;
+    margin:10px 0 0;
+}
+
+/* ================= ĐỊNH DẠNG ẢNH & OVERLAY CHUNG ================= */
+.portrait,
+.gallery-main,
+.gallery-small .photo {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+/* Thuộc tính ảnh giúp KHÔNG BỊ CẮT MẶT */
+.portrait img,
+.gallery-main img,
+.gallery-small .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%; /* Trọng tâm ảnh dời lên phía trên khuôn mặt */
+    display: block;
+}
+
+/* Lớp phủ màu mờ cho tất cả các ảnh giống hệt Hero */
+.portrait::after,
+.gallery-main::after,
+.gallery-small .photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #31452c18 20%, #273323aa 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ================= PORTRAIT ================= */
+.portrait{
+    height:390px;
+    border:8px solid #fff;
+    outline:1px solid #c5d1aa;
+}
+
+.portrait:before{
+    content:"";
+    width:230px;
+    height:300px;
+    border:1px solid #ffffff99;
+    border-radius:150px 150px 12px 12px;
+    position:absolute;
+    z-index: 2; /* Để viền đè lên trên lớp gradient */
+}
+
+/* ================= DATE ================= */
+.date-card{
+    margin-top:24px;
+    padding:25px 15px;
+    background:#fff;
+    border:1px solid #d9e0c5;
+}
+
+.date-big{
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+    color:var(--green);
+}
+
+.date-small{
+    font-size:12px;
+    line-height:1.8;
+    color:var(--muted);
+    margin-top:8px;
+}
+
+/* ================= COUNTDOWN ================= */
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+    margin-top:20px;
+}
+
+.time{
+    background:var(--sage);
+    padding:12px 2px;
+}
+
+.time b{
+    font:24px 'Playfair Display',serif;
+    display:block;
+}
+
+.time small{
+    font-size:9px;
+    letter-spacing:1px;
+    color:#66705c;
+}
+
+/* ================= CALENDAR ================= */
+.calendar{
+    margin-top:24px;
+    padding:18px;
+    background:#fff;
+    border:1px solid #d9e0c5;
+    border-radius:12px;
+}
+
+.calendar-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.calendar-head h3{
+    font:23px 'Playfair Display',serif;
+    color:var(--green);
+    margin:0;
+}
+
+.calendar-head button{
+    border:1px solid #d5dfbf;
+    background:var(--light);
+    color:var(--green);
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+}
+
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:4px;
+}
+
+.calendar-grid span{
+    font-size:10px;
+    color:#818779;
+    padding:7px 0;
+}
+
+.calendar-grid .day{
+    font-size:12px;
+    padding:9px 0;
+    border-radius:8px;
+}
+
+.calendar-grid .empty{
+    visibility:hidden;
+}
+
+.calendar-grid .marked{
+    background:var(--green);
+    color:white;
+    font-weight:600;
+}
+
+/* ================= TIMELINE ================= */
+.timeline{
+    text-align:left;
+    margin:30px 5px 0;
+    border-left:1px solid #c7d2b0;
+    padding-left:23px;
+}
+
+.event{
+    position:relative;
+    margin-bottom:28px;
+}
+
+.event:before{
+    content:"";
+    position:absolute;
+    left:-28px;
+    top:5px;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--gold);
+}
+
+.event time{
+    font-size:10px;
+    letter-spacing:2px;
+    color:var(--gold);
+}
+
+.event h4{
+    font:20px 'Playfair Display',serif;
+    margin:6px 0;
+}
+
+.event p{
+    font-size:12px;
+    line-height:1.8;
+    color:var(--muted);
+    margin:0;
+}
+
+/* ================= LOCATION ================= */
+.location{
+    background:var(--green);
+    color:white;
+    padding:28px 18px;
+    border-radius:2px;
+    overflow:hidden;
+}
+
+.location h3{
+    font:23px 'Playfair Display',serif;
+    font-weight:400;
+    margin:0 0 10px;
+}
+
+.location p{
+    font-size:12px;
+    line-height:1.8;
+    color:#edf2e5;
+}
+
+.map-frame{
+    width:100%;
+    height:230px;
+    border:0;
+    border-radius:9px;
+    margin-top:18px;
+}
+
+.map-btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:12px 18px;
+    border:1px solid #e2ebd2;
+    color:white;
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* ================================================= */
+/* =============== KHOẢNH KHẮC ==================== */
+/* ================================================= */
+
+.gallery{
+    margin-top:25px;
+    display:flex;
+    flex-direction:column;
+    gap:50px;
+}
+
+.gallery-section{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.gallery-main{
+    width:100%;
+    height:600px;
+    border:5px solid white;
+    outline:1px solid #d7dfc7;
+    transition: transform .35s, box-shadow .35s;
+}
+
+.gallery-main:hover{
+    transform:translateY(-5px);
+    box-shadow: 0 12px 25px #50633d24;
+}
+
+.gallery-small{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.gallery-small .photo{
+    height:260px; /* Làm ảnh nhỏ to ra rõ rệt */
+    border:5px solid white;
+    outline:1px solid #d7dfc7;
+    transition: transform .35s, box-shadow .35s;
+}
+
+.gallery-small .photo:hover{
+    transform:translateY(-5px);
+    box-shadow: 0 12px 25px #50633d24;
+}
+
+
+/* ================= RSVP ================= */
+.rsvp{
+    background:#fff;
+    border:1px solid #d9e0c5;
+    padding:20px;
+    text-align:left;
+    margin-top:25px;
+}
+
+.rsvp label{
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    margin:12px 0 5px;
+}
+
+.rsvp input,
+.rsvp select,
+.rsvp textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #d5ddc0;
+    border-radius:6px;
+    background:#fcfdf8;
+    font:inherit;
+}
+
+.rsvp button{
+    width:100%;
+    margin-top:15px;
+    border:0;
+    background:var(--green);
+    color:#fff;
+    padding:13px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    padding:65px 25px;
+    background:var(--dark);
+    color:#f4f5eb;
+    text-align:center;
+}
+
+.footer .script{
+    font-size:50px;
+}
+
+.footer p{
+    font-size:12px;
+    line-height:2;
+}
+
+/* ================= TOP BUTTON ================= */
+.top-btn{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:var(--green);
+    color:white;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.top-btn.show{
+    opacity:1;
+    pointer-events:auto;
+    z-index: 99;
+}
+
+
+/* ================= MOBILE ================= */
+@media(max-width:390px){
+    .names{
+        font-size:30px;
+    }
+    .section{
+        padding:52px 19px;
+    }
+    .portrait{
+        height:350px;
+    }
+    .gallery-main{
+        height:320px;
+    }
+    .gallery-small .photo{
+        height:210px; /* Làm ảnh nhỏ to ra trên mobile */
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+<!-- ================================================= -->
+<!-- ==================== HERO ======================= -->
+<!-- ================================================= -->
+<section class="hero">
+    <div class="hero-photo"></div>
+    <div class="hero-top">
+        SAVE THE DATE
+    </div>
+    <div class="hero-content">
+        <div class="script">
+            The Wedding Of
+        </div>
+        <div class="divider"></div>
+        <div class="names" id="heroGroom">
+            TÔ THẾ NAM
+        </div>
+        <div class="amp">
+            &
+        </div>
+        <div class="names" id="heroBride">
+            LÊ THỊ ANH THƯ
+        </div>
+        <div class="hero-date">
+            28 · 10 · 2026 — 29 · 10 · 2026
+        </div>
+    </div>
+</section>
+
+<!-- ================================================= -->
+<!-- =================== INVITATION ================== -->
+<!-- ================================================= -->
+<section class="section reveal">
+    <div class="eyebrow">
+        TRÂN TRỌNG KÍNH MỜI
+    </div>
+    <div class="title">
+        Đến chung vui cùng gia đình
+    </div>
+    <p class="lead">
+        Sự hiện diện của quý khách là niềm vinh hạnh
+        và là món quà ý nghĩa nhất trong ngày vui của chúng tôi.
+    </p>
+    <div class="family">
+        <div class="family-card">
+            <h3>
+                NHÀ TRAI
+            </h3>
+            <p id="groomFamily">
+                Ông Tô Thế Nghị<br>
+                Bà Nguyễn Thị Hạnh
+            </p>
+        </div>
+        <div class="family-card">
+            <h3>
+                NHÀ GÁI
+            </h3>
+            <p id="brideFamily">
+                Ông Lê Văn Sơn<br>
+                Bà Nguyễn Thị Nhung
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================= -->
+<!-- ====================== DATE ===================== -->
+<!-- ================================================= -->
+<section class="section soft reveal">
+    <div class="portrait">
+        <!-- Chuyển lại về thẻ img để tránh lỗi file, màng bọc mờ được CSS tự thêm vào -->
+        <img src="AnhBia2.jpe" alt="Cô dâu chú rể">
+    </div>
+    <div class="divider"></div>
+    <div class="script" style="font-size:70px">
+        Ngày chung đôi
+    </div>
+    <div class="date-card">
+        <div class="date-big">
+            28.10.2026 — 29.10.2026
+        </div>
+        <div class="date-small">
+            Bắt đầu từ 05:00 ngày 28 tháng 10<br>
+            đến 11:00 ngày 29 tháng 10
+        </div>
+        <div class="countdown">
+            <div class="time">
+                <b id="days">--</b>
+                <small>NGÀY</small>
+            </div>
+            <div class="time">
+                <b id="hours">--</b>
+                <small>GIỜ</small>
+            </div>
+            <div class="time">
+                <b id="mins">--</b>
+                <small>PHÚT</small>
+            </div>
+            <div class="time">
+                <b id="secs">--</b>
+                <small>GIÂY</small>
+            </div>
+        </div>
+    </div>
+    <div class="calendar">
+        <div class="calendar-head">
+            <button onclick="changeMonth(-1)">‹</button>
+            <h3 id="calendarTitle">
+                Tháng 10 · 2026
+            </h3>
+            <button onclick="changeMonth(1)">›</button>
+        </div>
+        <div class="calendar-grid">
+            <span>T2</span>
+            <span>T3</span>
+            <span>T4</span>
+            <span>T5</span>
+            <span>T6</span>
+            <span>T7</span>
+            <span>CN</span>
+        </div>
+        <div class="calendar-grid" id="calendarDays"></div>
+    </div>
+</section>
+
+<!-- ================================================= -->
+<!-- ==================== TIMELINE =================== -->
+<!-- ================================================= -->
+<section class="section reveal">
+    <div class="eyebrow">
+        WEDDING CEREMONY
+    </div>
+    <div class="title">
+        Lịch trình ngày vui
+    </div>
+    <div class="timeline">
+        <div class="event">
+            <time>
+                05:00 · 28/10/2026
+            </time>
+            <h4>
+                Bắt đầu ngày chung đôi
+            </h4>
+            <p>
+                Thời gian chính thức bắt đầu theo thông tin gia đình.
+            </p>
+        </div>
+        <div class="event">
+            <time>
+                TRONG NGÀY 28/10
+            </time>
+            <h4>
+                Ngày vui của hai gia đình
+            </h4>
+            <p>
+                Thời gian và nghi lễ có thể bổ sung sau.
+            </p>
+        </div>
+        <div class="event">
+            <time>
+                11:00 · 29/10/2026
+            </time>
+            <h4>
+                Kết thúc
+            </h4>
+            <p>
+                Khép lại hành trình ngày chung đôi.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================= -->
+<!-- ==================== LOCATION =================== -->
+<!-- ================================================= -->
+<section class="section soft reveal">
+    <div class="eyebrow">
+        LOCATION
+    </div>
+    <div class="title">
+        Địa điểm tổ chức
+    </div>
+    <div class="location">
+        <h3 id="placeTitle">
+            Thôn Nội - Xã Vĩnh Hưng
+        </h3>
+        <p id="placeText">
+            Thôn Nội - Xã Vĩnh Hưng
+        </p>
+        <iframe
+            class="map-frame"
+            src="https://www.google.com/maps?q=Thôn%20Nội%20Xã%20Vĩnh%20Hưng&output=embed"
+            loading="lazy"
+            title="Bản đồ địa điểm tổ chức">
+        </iframe>
+        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Thôn+Nội+Xã+Vĩnh+Hưng" target="_blank">
+            XEM CHỈ ĐƯỜNG
+        </a>
+    </div>
+</section>
+
+<!-- ================================================= -->
+<!-- ============== KHOẢNH KHẮC ===================== -->
+<!-- ================================================= -->
+<section class="section reveal">
+    <div class="eyebrow">
+        OUR MEMORIES
+    </div>
+    <div class="title">
+        Khoảnh khắc của chúng tôi
+    </div>
+    <p class="lead">
+        Những khoảnh khắc đáng nhớ trong hành trình
+        của cô dâu và chú rể.
+    </p>
+    <div class="gallery">
+        <!-- ========================================= -->
+        <!-- ================ PHẦN 1 ================= -->
+        <!-- ========================================= -->
+        <div class="gallery-section">
+            <div class="gallery-main">
+                <img src="AnhBia.jpe" alt="Ảnh cưới">
+            </div>
+            <div class="gallery-small">
+                <div class="photo">
+                    <img src="Anh1.jpe" alt="Ảnh cưới">
+                </div>
+                <div class="photo">
+                    <img src="Anh2.jpe" alt="Ảnh cưới">
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- ================ PHẦN 2 ================= -->
+        <!-- ========================================= -->
+        <div class="gallery-section">
+            <div class="gallery-main">
+                <img src="AnhTo2.jpe" alt="Ảnh cưới">
+            </div>
+            <div class="gallery-small">
+                <div class="photo">
+                    <img src="Anh3.jpe" alt="Ảnh cưới">
+                </div>
+                <div class="photo">
+                    <img src="Anh4.jpe" alt="Ảnh cưới">
+                </div>
+                <div class="photo">
+                    <img src="Anh5.jpe" alt="Ảnh cưới">
+                </div>
+                <div class="photo">
+                    <img src="Anh6.jpe" alt="Ảnh cưới">
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- ================ PHẦN 3 ================= -->
+        <!-- ========================================= -->
+        <div class="gallery-section">
+            <div class="gallery-main">
+                <img src="AnhTo3.jpe" alt="Ảnh cưới">
+            </div>
+            <div class="gallery-small">
+                <div class="photo">
+                    <img src="Anh7.jpe" alt="Ảnh cưới">
+                </div>
+                <div class="photo">
+                    <img src="Anh8.jpe" alt="Ảnh cưới">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================= -->
+<!-- ====================== RSVP ===================== -->
+<!-- ================================================= -->
+<section class="section soft reveal">
+    <div class="eyebrow">
+        RSVP
+    </div>
+    <div class="title">
+        Xác nhận tham dự
+    </div>
+    <p class="lead">
+        Hãy để chúng mình biết bạn có thể đến chung vui nhé.
+    </p>
+    <form class="rsvp" onsubmit="submitRSVP(event)">
+        <label>
+            Họ và tên
+        </label>
+        <input id="rsvpName" required placeholder="Nhập họ và tên">
+        <label>
+            Bạn sẽ tham dự?
+        </label>
+        <select id="rsvpAttend">
+            <option>Có, mình sẽ tham dự</option>
+            <option>Xin lỗi, mình không thể tham dự</option>
+        </select>
+        <label>
+            Lời nhắn
+        </label>
+        <textarea id="rsvpMessage" rows="3" placeholder="Gửi lời chúc đến cô dâu chú rể"></textarea>
+        <button type="submit">
+            GỬI XÁC NHẬN
+        </button>
+        <p id="rsvpResult" style="font-size:11px; color:var(--green); margin-bottom:0"></p>
+    </form>
+</section>
+
+<!-- ================================================= -->
+<!-- ===================== FOOTER ==================== -->
+<!-- ================================================= -->
+<section class="footer reveal">
+    <div class="script">
+        Thank You
+    </div>
+    <p>
+        Cảm ơn bạn đã dành thời gian
+        đến chung vui cùng chúng tôi.
+    </p>
+</section>
+</div>
+
+<!-- NÚT LÊN ĐẦU -->
+<button class="top-btn" id="topBtn" onclick="scrollTo({top:0,behavior:'smooth'})">
+    ↑
+</button>
+
+<script>
+/* ================= ANIMATION ================= */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(
+    entries => entries.forEach(e => {
+        if(e.isIntersecting) e.target.classList.add('show');
+    }),
+    { threshold:.12 }
+);
+reveals.forEach(e => observer.observe(e));
+
+
+/* ================= COUNTDOWN ================= */
+function countdown(){
+    const target = new Date('2026-10-28T05:00:00');
+    const diff = Math.max(0, target - new Date());
+    const s = Math.floor(diff / 1000);
+    days.textContent = Math.floor(s / 86400);
+    hours.textContent = String(Math.floor(s % 86400 / 3600)).padStart(2,'0');
+    mins.textContent = String(Math.floor(s % 3600 / 60)).padStart(2,'0');
+    secs.textContent = String(s % 60).padStart(2,'0');
+}
+countdown();
+setInterval(countdown, 1000);
+
+
+/* ================= CALENDAR ================= */
+let month = 9;
+let year = 2026;
+function renderCalendar(){
+    calendarTitle.textContent = `Tháng ${month+1} · ${year}`;
+    calendarDays.innerHTML = '';
+    let start = (new Date(year, month, 1).getDay() + 6) % 7;
+    let total = new Date(year, month + 1, 0).getDate();
+    for(let i = 0; i < start; i++){
+        let x = document.createElement('span');
+        x.className = 'day empty';
+        x.textContent = '0';
+        calendarDays.appendChild(x);
+    }
+    for(let d = 1; d <= total; d++){
+        let x = document.createElement('span');
+        x.className = 'day';
+        x.textContent = d;
+        if(year === 2026 && month === 9 && (d === 28 || d === 29)){
+            x.classList.add('marked');
+        }
+        calendarDays.appendChild(x);
+    }
+}
+function changeMonth(n){
+    month += n;
+    if(month < 0){
+        month = 11;
+        year--;
+    }
+    if(month > 11){
+        month = 0;
+        year++;
+    }
+    renderCalendar();
+}
+renderCalendar();
+
+/* ================= RSVP ================= */
+function submitRSVP(e){
+    e.preventDefault();
+    rsvpResult.textContent = 'Thông tin đã được ghi nhận trên trình duyệt này. Bạn có thể kết nối biểu mẫu với Google Forms hoặc máy chủ sau.';
+}
+
+/* ================= TOP BUTTON ================= */
+window.addEventListener(
+    'scroll',
+    () => topBtn.classList.toggle('show', scrollY > 500)
+);
+</script>
+</body>
+</html>
