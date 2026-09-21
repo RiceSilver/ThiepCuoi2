@@ -595,9 +595,85 @@ section{
     }
 }
 
+
+/* ================= MỞ THIỆP + NHẠC ================= */
+#musicOverlay{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(39,51,35,.94);
+    color:white;
+    transition:opacity .7s ease, visibility .7s ease;
+}
+
+#musicOverlay.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.music-box{
+    text-align:center;
+    padding:35px 28px;
+    width:min(90%,360px);
+}
+
+.music-heart{
+    font-family:'Great Vibes',cursive;
+    font-size:72px;
+    line-height:1;
+    margin-bottom:12px;
+}
+
+.music-title{
+    font-family:'Playfair Display',serif;
+    font-size:22px;
+    letter-spacing:2px;
+}
+
+.music-text{
+    margin:12px 0 22px;
+    font-size:12px;
+    letter-spacing:2px;
+    opacity:.85;
+}
+
+#openInvitation{
+    border:1px solid #dfe8c9;
+    background:transparent;
+    color:white;
+    padding:13px 28px;
+    font:11px 'Be Vietnam Pro',sans-serif;
+    letter-spacing:2px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#openInvitation:hover{
+    background:#dfe8c9;
+    color:#273323;
+}
+
 </style>
 </head>
 <body>
+<!-- ================= NHẠC NỀN ================= -->
+<audio id="weddingMusic" loop preload="auto">
+    <source src="nhac.mp3" type="audio/mpeg">
+</audio>
+
+<div id="musicOverlay">
+    <div class="music-box">
+        <div class="music-heart">♡</div>
+        <div class="music-title">THẾ NAM & ANH THƯ</div>
+        <div class="music-text">Chạm để mở thiệp</div>
+        <button id="openInvitation">MỞ THIỆP</button>
+    </div>
+</div>
+
 <div class="page">
 <!-- ================================================= -->
 <!-- ==================== HERO ======================= -->
@@ -742,7 +818,7 @@ section{
                 Bắt đầu ngày chung đôi
             </h4>
             <p>
-                Thời gian chính thức bắt đầu theo thông tin gia đình.
+                Bắt đầu đám cưới với sự chuẩn bị chu đáo của cô dâu-chú rể
             </p>
         </div>
         <div class="event">
@@ -753,7 +829,8 @@ section{
                 Ngày vui của hai gia đình
             </h4>
             <p>
-                Thời gian và nghi lễ có thể bổ sung sau.
+                Làm lễ ăn hỏi.
+                Đón tiếp quan viên hai họ,bạn bè hai bên.
             </p>
         </div>
         <div class="event">
@@ -761,10 +838,9 @@ section{
                 11:00 · 29/10/2026
             </time>
             <h4>
-                Kết thúc
-            </h4>
+                Đón dâu
             <p>
-                Khép lại hành trình ngày chung đôi.
+                Đưa cô dâu về nhà người thương.
             </p>
         </div>
     </div>
@@ -782,18 +858,21 @@ section{
     </div>
     <div class="location">
         <h3 id="placeTitle">
-            Thôn Nội - Xã Vĩnh Hưng
+            Thôn Nội - Vĩnh Hưng
         </h3>
         <p id="placeText">
-            Thôn Nội - Xã Vĩnh Hưng
+            Thôn Nội - Vĩnh Hưng
         </p>
         <iframe
             class="map-frame"
-            src="https://www.google.com/maps?q=Thôn%20Nội%20Xã%20Vĩnh%20Hưng&output=embed"
+            src="https://www.google.com/maps?q=21.2635241,105.496854&z=17&output=embed"
             loading="lazy"
             title="Bản đồ địa điểm tổ chức">
         </iframe>
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Thôn+Nội+Xã+Vĩnh+Hưng" target="_blank">
+        <a class="map-btn"
+           href="https://maps.app.goo.gl/y8ZxmKqXUd78USbN7"
+           target="_blank"
+           rel="noopener noreferrer">
             XEM CHỈ ĐƯỜNG
         </a>
     </div>
@@ -1003,6 +1082,18 @@ window.addEventListener(
     'scroll',
     () => topBtn.classList.toggle('show', scrollY > 500)
 );
+
+/* ================= NHẠC NỀN ================= */
+const weddingMusic = document.getElementById('weddingMusic');
+const musicOverlay = document.getElementById('musicOverlay');
+const openInvitation = document.getElementById('openInvitation');
+
+openInvitation.addEventListener('click', function(){
+    weddingMusic.volume = 0.45;
+    weddingMusic.play().catch(() => {});
+    musicOverlay.classList.add('hidden');
+});
+
 </script>
 </body>
 </html>
