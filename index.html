@@ -576,6 +576,279 @@ section{
 }
 
 
+
+/* ================= LUNG LINH / ANIMATION ================= */
+:root{
+    --sparkle:#fff7c7;
+    --glow:#f4e6a5;
+}
+
+body{
+    background:
+        radial-gradient(circle at 15% 10%, #fff8c055 0 2px, transparent 3px),
+        radial-gradient(circle at 85% 30%, #ffffff55 0 2px, transparent 3px),
+        #dce3d2;
+}
+
+.page{
+    position:relative;
+}
+
+/* Ánh sáng chạy qua tiêu đề */
+.title,
+.script,
+.names,
+.hero-date{
+    text-shadow:0 0 8px #fff8, 0 0 22px #e9d88955;
+}
+
+.title{
+    position:relative;
+    overflow:hidden;
+}
+
+.title::after{
+    content:"";
+    position:absolute;
+    top:-20%;
+    left:-45%;
+    width:28%;
+    height:140%;
+    transform:skewX(-20deg);
+    background:linear-gradient(90deg,transparent,#fff9,transparent);
+    animation:titleShine 4.5s ease-in-out infinite;
+}
+
+@keyframes titleShine{
+    0%,65%{left:-45%}
+    100%{left:135%}
+}
+
+/* Ảnh cô dâu / chú rể */
+.couple{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:28px;
+}
+
+.person-card{
+    position:relative;
+    overflow:hidden;
+    padding:8px;
+    background:linear-gradient(145deg,#fff,#f7f2dc,#fff);
+    border:1px solid #d8c77f;
+    border-radius:18px;
+    box-shadow:0 12px 35px #50633d22, 0 0 0 1px #fff inset;
+    transform:translateY(0);
+    transition:transform .45s ease, box-shadow .45s ease;
+}
+
+.person-card:hover{
+    transform:translateY(-8px) scale(1.015);
+    box-shadow:0 18px 45px #50633d35, 0 0 28px #e8d57a55;
+}
+
+.person-photo{
+    position:relative;
+    height:330px;
+    overflow:hidden;
+    border-radius:13px;
+    background:#e9eddd;
+}
+
+.person-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 15%;
+    display:block;
+    transition:transform 1s ease;
+}
+
+.person-card:hover .person-photo img{
+    transform:scale(1.06);
+}
+
+.person-photo::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
+    background:
+        radial-gradient(circle at 20% 20%,#fff9 0 2px,transparent 3px),
+        radial-gradient(circle at 75% 28%,#fff8 0 2px,transparent 3px),
+        linear-gradient(180deg,transparent 60%,#27332355);
+    pointer-events:none;
+}
+
+.person-name{
+    padding:12px 6px 5px;
+    font:23px 'Playfair Display',serif;
+    color:var(--green);
+}
+
+.person-role{
+    padding-bottom:8px;
+    font-size:9px;
+    letter-spacing:3px;
+    color:var(--gold);
+}
+
+/* Khung ảnh lung linh */
+.gallery-main,
+.gallery-small .photo,
+.portrait{
+    box-shadow:0 10px 35px #50633d20;
+}
+
+.gallery-main::before,
+.gallery-small .photo::before,
+.portrait::before,
+.person-card::after{
+    content:"";
+    position:absolute;
+    z-index:3;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 15% 20%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 82% 15%,#fff9 0 1.5px,transparent 2.5px),
+        radial-gradient(circle at 65% 75%,#fff8 0 1px,transparent 2px);
+    animation:twinkle 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.18; transform:scale(.995)}
+    50%{opacity:.48}
+    to{opacity:.72; transform:scale(1)}
+}
+
+/* Hạt sáng / cánh hoa bay */
+.magic-particle{
+    position:fixed;
+    top:-30px;
+    left:0;
+    z-index:9998;
+    pointer-events:none;
+    user-select:none;
+    animation:fall linear forwards;
+    filter:drop-shadow(0 0 5px #fff);
+}
+
+@keyframes fall{
+    0%{
+        transform:translate3d(0,-30px,0) rotate(0deg) scale(.7);
+        opacity:0;
+    }
+    10%{opacity:.95}
+    50%{
+        transform:translate3d(var(--drift),50vh,0) rotate(180deg) scale(1);
+    }
+    100%{
+        transform:translate3d(calc(var(--drift) * -0.4),110vh,0) rotate(360deg) scale(.8);
+        opacity:0;
+    }
+}
+
+/* Viền vàng phát sáng */
+.location,
+.date-card,
+.calendar,
+.rsvp,
+.family-card{
+    position:relative;
+    box-shadow:0 8px 30px #50633d18;
+}
+
+.location::after,
+.date-card::after,
+.calendar::after,
+.rsvp::after{
+    content:"";
+    position:absolute;
+    inset:4px;
+    border:1px solid #e6d98b55;
+    border-radius:inherit;
+    pointer-events:none;
+    animation:borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow{
+    from{box-shadow:0 0 2px #e6d98b22}
+    to{box-shadow:0 0 18px #e6d98b55}
+}
+
+/* Nút dẫn đường / RSVP lấp lánh */
+.map-btn,
+.rsvp button,
+#openInvitation{
+    position:relative;
+    overflow:hidden;
+}
+
+.map-btn::after,
+.rsvp button::after,
+#openInvitation::after{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-70%;
+    width:45%;
+    height:200%;
+    transform:rotate(20deg);
+    background:linear-gradient(90deg,transparent,#fff8,transparent);
+    pointer-events:none;
+    animation:buttonShine 3.8s ease-in-out infinite;
+}
+
+@keyframes buttonShine{
+    0%,60%{left:-70%}
+    100%{left:140%}
+}
+
+/* Hiệu ứng xuất hiện mềm hơn */
+.reveal{
+    opacity:0;
+    transform:translateY(45px) scale(.985);
+    transition:opacity 1s ease, transform 1s cubic-bezier(.2,.75,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* Trang trí nhỏ */
+.ornament{
+    margin:8px auto 0;
+    color:var(--gold);
+    font-size:18px;
+    letter-spacing:8px;
+    animation:ornamentPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ornamentPulse{
+    0%,100%{opacity:.55; transform:scale(.96)}
+    50%{opacity:1; transform:scale(1.05)}
+}
+
+@media(max-width:390px){
+    .couple{
+        gap:8px;
+    }
+    .person-photo{
+        height:245px;
+    }
+    .person-name{
+        font-size:18px;
+    }
+    .person-role{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+}
+
 /* ================= MOBILE ================= */
 @media(max-width:390px){
     .names{
@@ -657,6 +930,221 @@ section{
     color:#273323;
 }
 
+
+#musicOverlay,
+#musicOverlay .music-box,
+#openInvitation{
+    -webkit-tap-highlight-color:transparent;
+}
+#musicOverlay{isolation:isolate;}
+#musicOverlay .music-box{position:relative;z-index:10000;}
+#openInvitation{z-index:10001;pointer-events:auto!important;cursor:pointer;}
+
+
+/* ================= PHOTO LIGHTBOX ================= */
+.photo-clickable{
+    cursor:zoom-in;
+}
+
+.photo-clickable img{
+    cursor:zoom-in;
+}
+
+.photo-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:100000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(18,24,16,.88);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .35s ease, visibility .35s ease;
+}
+
+.photo-lightbox.show{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.photo-lightbox-inner{
+    position:relative;
+    width:min(94vw,900px);
+    height:min(92vh,900px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:lightboxIn .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.photo-lightbox img{
+    max-width:100%;
+    max-height:90vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:10px;
+    box-shadow:0 0 0 1px #fff5, 0 18px 70px #0009, 0 0 35px #f3df8b30;
+    background:#fff;
+}
+
+.photo-lightbox-close{
+    position:absolute;
+    top:-12px;
+    right:-8px;
+    width:42px;
+    height:42px;
+    border:1px solid #fff8;
+    border-radius:50%;
+    background:#273323dd;
+    color:#fff;
+    font-size:25px;
+    line-height:1;
+    cursor:pointer;
+    z-index:2;
+    box-shadow:0 0 18px #fff2;
+    transition:transform .25s ease, background .25s ease;
+}
+
+.photo-lightbox-close:hover{
+    transform:rotate(90deg) scale(1.08);
+    background:#50633d;
+}
+
+.photo-lightbox-hint{
+    position:absolute;
+    bottom:-34px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#fff;
+    font-size:10px;
+    letter-spacing:2px;
+    white-space:nowrap;
+    opacity:.65;
+}
+
+@keyframes lightboxIn{
+    from{opacity:0; transform:scale(.90) translateY(18px)}
+    to{opacity:1; transform:scale(1) translateY(0)}
+}
+
+@media(max-width:600px){
+    .photo-lightbox{
+        padding:10px;
+    }
+    .photo-lightbox-inner{
+        width:96vw;
+        height:90vh;
+    }
+    .photo-lightbox img{
+        max-width:96vw;
+        max-height:84vh;
+        border-radius:7px;
+    }
+    .photo-lightbox-close{
+        top:2px;
+        right:2px;
+        width:40px;
+        height:40px;
+    }
+    .photo-lightbox-hint{
+        bottom:-27px;
+        font-size:8px;
+    }
+}
+
+/* ================= SOFT REVEAL ANIMATIONS ================= */
+.reveal{
+    opacity:0;
+    transform:translateY(34px) scale(.985);
+    filter:blur(3px);
+    transition:
+        opacity 1.05s ease,
+        transform 1.05s cubic-bezier(.2,.75,.2,1),
+        filter 1.05s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+    filter:blur(0);
+}
+
+.reveal .family-card,
+.reveal .person-card,
+.reveal .event,
+.reveal .gallery-section,
+.reveal .date-card,
+.reveal .calendar,
+.reveal .location,
+.reveal .rsvp{
+    opacity:0;
+    transform:translateY(22px);
+}
+
+.reveal.show .family-card,
+.reveal.show .person-card,
+.reveal.show .event,
+.reveal.show .gallery-section,
+.reveal.show .date-card,
+.reveal.show .calendar,
+.reveal.show .location,
+.reveal.show .rsvp{
+    animation:softItemIn .9s cubic-bezier(.2,.75,.2,1) forwards;
+}
+
+.reveal.show .family-card:nth-child(2),
+.reveal.show .person-card:nth-child(2),
+.reveal.show .event:nth-child(2),
+.reveal.show .gallery-section:nth-child(2){
+    animation-delay:.14s;
+}
+
+.reveal.show .event:nth-child(3),
+.reveal.show .gallery-section:nth-child(3){
+    animation-delay:.28s;
+}
+
+@keyframes softItemIn{
+    from{opacity:0; transform:translateY(22px) scale(.985)}
+    to{opacity:1; transform:translateY(0) scale(1)}
+}
+
+/* ảnh xuất hiện kiểu zoom mềm */
+.gallery-section,
+.person-card,
+.portrait{
+    will-change:transform,opacity;
+}
+
+.gallery-main,
+.gallery-small .photo,
+.person-photo,
+.portrait{
+    animation:photoBreath 7s ease-in-out infinite alternate;
+}
+
+@keyframes photoBreath{
+    from{box-shadow:0 8px 26px #50633d16}
+    to{box-shadow:0 12px 34px #50633d25}
+}
+
+/* Giảm chuyển động nếu thiết bị yêu cầu */
+@media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.01ms!important;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -665,12 +1153,19 @@ section{
     <source src="nhac.mp3" type="audio/mpeg">
 </audio>
 
-<div id="musicOverlay">
+<div id="musicOverlay" onclick="if(event.target===this){this.classList.add('hidden'); var m=document.getElementById('weddingMusic'); m.volume=0.45; var p=m.play(); if(p){p.catch(function(){})}}">
+
     <div class="music-box">
         <div class="music-heart">♡</div>
         <div class="music-title">THẾ NAM & ANH THƯ</div>
         <div class="music-text">Chạm để mở thiệp</div>
-        <button id="openInvitation">MỞ THIỆP</button>
+        <button
+    id="openInvitation"
+    type="button"
+    style="position:relative;z-index:10001;touch-action:manipulation;"
+    onclick="document.getElementById('musicOverlay').classList.add('hidden'); var m=document.getElementById('weddingMusic'); m.volume=0.45; var p=m.play(); if(p){p.catch(function(){})}">
+    MỞ THIỆP
+</button>
     </div>
 </div>
 
@@ -740,10 +1235,41 @@ section{
 </section>
 
 <!-- ================================================= -->
+<!-- ================= COUPLE PORTRAITS ============== -->
+<!-- ================================================= -->
+<section class="section soft reveal">
+    <div class="eyebrow">THE COUPLE</div>
+    <div class="title">Cô dâu & Chú rể</div>
+    <div class="ornament">✦ ♡ ✦</div>
+    <p class="lead">
+        Hai người, một hành trình và một ngày thật đặc biệt.
+    </p>
+
+    <div class="couple">
+        <!-- Nếu ảnh của bạn khác tên, chỉ cần đổi src bên dưới -->
+        <div class="person-card">
+            <div class="person-photo photo-clickable">
+                <img src="ChuRe.jpe" alt="Chú rể Thế Nam">
+            </div>
+            <div class="person-name">THẾ NAM</div>
+            <div class="person-role">CHÚ RỂ</div>
+        </div>
+
+        <div class="person-card">
+            <div class="person-photo photo-clickable">
+                <img src="CoDau.jpe" alt="Cô dâu Anh Thư">
+            </div>
+            <div class="person-name">ANH THƯ</div>
+            <div class="person-role">CÔ DÂU</div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================= -->
 <!-- ====================== DATE ===================== -->
 <!-- ================================================= -->
 <section class="section soft reveal">
-    <div class="portrait">
+    <div class="portrait photo-clickable">
         <!-- Chuyển lại về thẻ img để tránh lỗi file, màng bọc mờ được CSS tự thêm vào -->
         <img src="AnhBia2.jpe" alt="Cô dâu chú rể">
     </div>
@@ -818,8 +1344,7 @@ section{
                 Bắt đầu ngày chung đôi
             </h4>
             <p>
-                Bắt đầu đám cưới với sự chuẩn bị chu đáo của cô dâu-chú rể
-            </p>
+                Bắt đầu đám cưới với sự chuẩn bị chu đáo của cô dâu-chú rể và gia đình hai bên
         </div>
         <div class="event">
             <time>
@@ -829,8 +1354,7 @@ section{
                 Ngày vui của hai gia đình
             </h4>
             <p>
-                Làm lễ ăn hỏi.
-                Đón tiếp quan viên hai họ,bạn bè hai bên.
+                Làm lễ ăn hỏi. Đón tiếp quan viên hai họ,bạn bè hai bên.
             </p>
         </div>
         <div class="event">
@@ -839,6 +1363,7 @@ section{
             </time>
             <h4>
                 Đón dâu
+            </h4>
             <p>
                 Đưa cô dâu về nhà người thương.
             </p>
@@ -897,14 +1422,14 @@ section{
         <!-- ================ PHẦN 1 ================= -->
         <!-- ========================================= -->
         <div class="gallery-section">
-            <div class="gallery-main">
+            <div class="gallery-main photo-clickable">
                 <img src="AnhBia.jpe" alt="Ảnh cưới">
             </div>
             <div class="gallery-small">
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh1.jpe" alt="Ảnh cưới">
                 </div>
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh2.jpe" alt="Ảnh cưới">
                 </div>
             </div>
@@ -914,20 +1439,20 @@ section{
         <!-- ================ PHẦN 2 ================= -->
         <!-- ========================================= -->
         <div class="gallery-section">
-            <div class="gallery-main">
+            <div class="gallery-main photo-clickable">
                 <img src="AnhTo2.jpe" alt="Ảnh cưới">
             </div>
             <div class="gallery-small">
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh3.jpe" alt="Ảnh cưới">
                 </div>
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh4.jpe" alt="Ảnh cưới">
                 </div>
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh5.jpe" alt="Ảnh cưới">
                 </div>
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh6.jpe" alt="Ảnh cưới">
                 </div>
             </div>
@@ -937,14 +1462,14 @@ section{
         <!-- ================ PHẦN 3 ================= -->
         <!-- ========================================= -->
         <div class="gallery-section">
-            <div class="gallery-main">
+            <div class="gallery-main photo-clickable">
                 <img src="AnhTo3.jpe" alt="Ảnh cưới">
             </div>
             <div class="gallery-small">
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh7.jpe" alt="Ảnh cưới">
                 </div>
-                <div class="photo">
+                <div class="photo photo-clickable">
                     <img src="Anh8.jpe" alt="Ảnh cưới">
                 </div>
             </div>
@@ -1088,12 +1613,91 @@ const weddingMusic = document.getElementById('weddingMusic');
 const musicOverlay = document.getElementById('musicOverlay');
 const openInvitation = document.getElementById('openInvitation');
 
-openInvitation.addEventListener('click', function(){
-    weddingMusic.volume = 0.45;
-    weddingMusic.play().catch(() => {});
-    musicOverlay.classList.add('hidden');
+
+
+/* ================= HIỆU ỨNG LUNG LINH ================= */
+const particleSymbols = ['✦','✧','♡','❀','✿','·'];
+
+function createMagicParticle(){
+    const p = document.createElement('span');
+    p.className = 'magic-particle';
+    p.textContent = particleSymbols[Math.floor(Math.random() * particleSymbols.length)];
+
+    const size = 8 + Math.random() * 14;
+    const duration = 5 + Math.random() * 6;
+    const drift = (-70 + Math.random() * 140) + 'px';
+
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.fontSize = size + 'px';
+    p.style.animationDuration = duration + 's';
+    p.style.setProperty('--drift', drift);
+    p.style.opacity = (.16 + Math.random() * .30).toFixed(2);
+
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), duration * 1000 + 300);
+}
+
+setInterval(createMagicParticle, 650);
+
+/* Khi mở thiệp, tăng nhẹ mật độ ánh sáng trong vài giây */
+openInvitation.addEventListener('click', () => {
+    for(let i = 0; i < 18; i++){
+        setTimeout(createMagicParticle, i * 100);
+    }
+});
+
+
+
+
+/* ================= CLICK ẢNH → PHÓNG TO ================= */
+const photoLightbox = document.getElementById('photoLightbox');
+const photoLightboxImage = document.getElementById('photoLightboxImage');
+const photoLightboxClose = document.getElementById('photoLightboxClose');
+
+document.querySelectorAll('.photo-clickable img').forEach(img => {
+    img.addEventListener('click', function(e){
+        e.stopPropagation();
+        photoLightboxImage.src = this.currentSrc || this.src;
+        photoLightboxImage.alt = this.alt || 'Ảnh cưới';
+        photoLightbox.classList.add('show');
+        photoLightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+function closePhotoLightbox(){
+    photoLightbox.classList.remove('show');
+    photoLightbox.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+        if(!photoLightbox.classList.contains('show')){
+            photoLightboxImage.src = '';
+        }
+    }, 350);
+}
+
+photoLightbox.addEventListener('click', function(e){
+    if(e.target === photoLightbox) closePhotoLightbox();
+});
+
+photoLightboxClose.addEventListener('click', closePhotoLightbox);
+
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && photoLightbox.classList.contains('show')){
+        closePhotoLightbox();
+    }
 });
 
 </script>
+
+<!-- ================= ẢNH PHÓNG TO ================= -->
+<div class="photo-lightbox" id="photoLightbox" aria-hidden="true">
+    <div class="photo-lightbox-inner" onclick="event.stopPropagation()">
+        <button class="photo-lightbox-close" id="photoLightboxClose" type="button" aria-label="Đóng ảnh">×</button>
+        <img id="photoLightboxImage" src="" alt="Ảnh phóng to">
+        <div class="photo-lightbox-hint">CHẠM RA NGOÀI ĐỂ ĐÓNG</div>
+    </div>
+</div>
+
 </body>
 </html>
